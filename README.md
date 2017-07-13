@@ -15,3 +15,8 @@ QA violations are logged to ``"${T}"/qa.log`` in [YAML](http://yaml.org/):
     - "/usr/share/bin/foo"
     - "/usr/share/bin/bar"
 ```
+
+## List of checks
+Name | Description
+---- | -----------
+share-elf | Identifies ELF files in ``/usr/share``

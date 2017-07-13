@@ -1,0 +1,19 @@
+# Check for ELF files in /usr/share
+
+check_share_elf() {
+	scanelf --nobanner --recursive --format %F "${D}"/usr/share > "${T}"/share-elfs.log
+
+	if [[ -s "${T}"/share-elfs.log ]] ; then
+		local files=()
+		while read -r file ; do
+			files+=( "${file/${D}/}" )
+		done < "${T}"/share-elfs.log
+
+		eqawarn QA Notice: ELF files were found in /usr/share:
+		eqatag -v share-elf "${files[@]}"
+	fi
+}
+
+check_share_elf
+
+:
