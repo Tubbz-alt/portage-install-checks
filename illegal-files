@@ -1,0 +1,21 @@
+# Check for files that should never be installed
+
+check_illegal_files() {
+	find "${D}/" \
+		\( -name '._*' -fprintf "${T}"/illegal-files.log "/%P\n" \) , \
+		\( -name 'Thumbs.db' -fprintf "${T}"/illegal-files.log "/%P\n" \)
+
+	if [[ -s "${T}"/illegal-files.log ]] ; then
+		local files=()
+		while read -r file ; do
+			files+=( "${file/${D}/}" )
+		done < "${T}"/illegal-files.log
+
+		eqawarn QA Notice: Illegal files were found:
+		eqatag -v illegal-files "${files[@]}"
+	fi
+}
+
+check_illegal_files
+
+:

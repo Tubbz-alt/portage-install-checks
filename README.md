@@ -19,6 +19,7 @@ QA violations are logged to ``"${T}"/qa.log`` in [YAML](http://yaml.org/):
 ## List of checks
 Name | Description
 ---- | -----------
+illegal-files | Files that should never be installed eg. Thumbs.db, OS X fork files etc.
 share-elf | Identifies ELF files in ``/usr/share``
 
 ## Credits
