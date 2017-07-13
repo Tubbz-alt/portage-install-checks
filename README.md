@@ -20,3 +20,10 @@ QA violations are logged to ``"${T}"/qa.log`` in [YAML](http://yaml.org/):
 Name | Description
 ---- | -----------
 share-elf | Identifies ELF files in ``/usr/share``
+
+## Credits
+Many checks have been inspired by or outright copied from a variety of sources, including, but not limited to:
+* Portage
+* flameeyes' tinderbox
+* toralf's tinderbox
+* lintian
