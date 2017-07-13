@@ -1,9 +1,13 @@
 # Check for files that should never be installed
 
 check_illegal_files() {
-	find "${D}/" \
-		\( -name '._*' -fprintf "${T}"/illegal-files.log "/%P\n" \) , \
-		\( -name 'Thumbs.db' -fprintf "${T}"/illegal-files.log "/%P\n" \)
+	find "${D}" \
+		\( \
+			-name '._*' \
+			-or -name 'Thumbs.db' \
+			-or -name '.DS_Store' \
+		\) \
+		-fprintf "${T}"/illegal-files.log "/%P\n"
 
 	if [[ -s "${T}"/illegal-files.log ]] ; then
 		local files=()
